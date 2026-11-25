@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#07111f">
+<title>CrisisBridge | Emergency Coordination</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div id="toast"></div>
+
+<!-- AUTH -->
+<section id="auth" class="auth hidden">
+  <div class="auth-left">
+    <div class="logo"><span>CB</span> CrisisBridge</div>
+    <div class="auth-hero">
+      <div class="eyebrow">DISASTER RESPONSE PLATFORM</div>
+      <h1>One bridge.<br>Every crisis.</h1>
+      <p>Connect citizens, volunteers and authorities with location-aware emergency reporting, rescue coordination, shelters, resources and AI-assisted decisions.</p>
+      <div class="chips"><span>GPS</span><span>Offline-first</span><span>Multilingual</span><span>AI support</span></div>
+    </div>
+    <small>Prototype • Designed for academic demonstration</small>
+  </div>
+  <div class="auth-right">
+    <div class="auth-head">
+      <div><div class="eyebrow">CRISISBRIDGE</div><h2 id="authHeading">Welcome back</h2><p id="authSub">Sign in to continue.</p></div>
+      <select id="authLang"><option value="en">English</option><option value="ta">Tamil</option><option value="te">Telugu</option><option value="hi">Hindi</option><option value="kn">Kannada</option><option value="ml">Malayalam</option><option value="bn">Bengali</option><option value="mr">Marathi</option><option value="gu">Gujarati</option><option value="pa">Punjabi</option><option value="ur">Urdu</option><option value="or">Odia</option></select>
+    </div>
+    <div class="tabs"><button data-auth="login" class="active">Login</button><button data-auth="register">Register</button></div>
+
+    <form id="loginForm" class="form">
+      <label>Email or phone<input id="loginId" required placeholder="you@example.com"></label>
+      <label>Password<div class="password"><input id="loginPass" type="password" required placeholder="Enter password"><button type="button" id="showPass">◉</button></div></label>
+      <div class="between"><label class="check"><input type="checkbox" id="remember"> Remember me</label><button type="button" class="link" id="forgot">Forgot password?</button></div>
+      <button class="btn primary wide" type="submit">Sign in <b>→</b></button>
+      <div class="demo"><b>Demo access</b><br>Citizen: citizen@crisisbridge.demo / 123456<br>Volunteer: volunteer@crisisbridge.demo / 123456<br>Authority: authority@crisisbridge.demo / 123456</div>
+    </form>
+
+    <form id="registerForm" class="form hidden">
+      <div class="grid2"><label>Full name<input id="rName" required></label><label>Phone<input id="rPhone" required placeholder="+91..."></label></div>
+      <label>Email<input id="rEmail" type="email" required></label>
+      <div class="grid2"><label>Password<input id="rPass" type="password" minlength="6" required></label><label>Role<select id="rRole"><option value="citizen">Citizen</option><option value="volunteer">Volunteer</option><option value="authority">Authority</option></select></label></div>
+      <label>Area / city<input id="rArea" required placeholder="Hosur, Tamil Nadu"></label>
+      <label class="check"><input type="checkbox" required> I agree to the platform terms.</label>
+      <button class="btn primary wide" type="submit">Create account <b>→</b></button>
+    </form>
+    <p class="security">🔒 Demo authentication is stored locally. The included backend provides the path to server-side authentication.</p>
+  </div>
+</section>
+
+<!-- APP -->
+<div id="app" class="app hidden">
+  <aside id="sidebar">
+    <div class="side-top"><div class="logo"><span>CB</span> CrisisBridge</div><button id="closeSide" class="icon mobile">×</button></div>
+    <div class="role" id="roleText">Citizen workspace</div>
+    <nav id="nav"></nav>
+    <div class="side-bottom">
+      <div class="connection"><i id="connDot"></i><div><b id="connTitle">Online</b><small id="connSub">Data synchronized</small></div></div>
+      <button class="navbtn" data-page="profile">◉ <span data-i18n="profile">My Profile</span></button>
+      <button class="navbtn" id="logout">↪ <span>Logout</span></button>
+    </div>
+  </aside>
+
+  <main>
+    <header>
+      <button class="icon mobile" id="openSide">☰</button>
+      <div class="crumb"><span id="section">Operations</span><b>/</b><strong id="title">Dashboard</strong></div>
+      <div class="head-actions">
+        <button class="icon" id="gpsTop" title="Get GPS">📍</button>
+        <button class="icon" id="notifications">🔔<i id="notifDot"></i></button>
+        <select id="language"><option value="en">EN</option><option value="ta">TA</option><option value="te">TE</option><option value="hi">HI</option><option value="kn">KN</option><option value="ml">ML</option><option value="bn">BN</option><option value="mr">MR</option><option value="gu">GU</option><option value="pa">PA</option><option value="ur">UR</option><option value="or">OR</option></select>
+        <button class="user-mini" id="userMini"><span class="avatar" id="avatar">U</span><span><b id="userName">User</b><small id="userRole">Citizen</small></span>⌄</button>
+      </div>
+    </header>
+
+    <div id="content">
+      <section id="dashboard" class="page"></section>
+      <section id="report" class="page"></section>
+      <section id="incidents" class="page"></section>
+      <section id="map" class="page"></section>
+      <section id="rescue" class="page"></section>
+      <section id="volunteers" class="page"></section>
+      <section id="shelters" class="page"></section>
+      <section id="resources" class="page"></section>
+      <section id="broadcast" class="page"></section>
+      <section id="alerts" class="page"></section>
+      <section id="information" class="page"></section>
+      <section id="analytics" class="page"></section>
+      <section id="profile" class="page"></section>
+      <section id="architecture" class="page"></section>
+      <section id="smart" class="page"></section>
+    </div>
+  </main>
+</div>
+<div id="modal"></div>
+<script src="app.js?v=15"></script>
+</body>
+</html>

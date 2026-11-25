@@ -1,0 +1,57 @@
+CRISISBRIDGE — FINAL PRESENTATION EDITION
+=========================================
+
+ONE-LAPTOP DEMO
+
+1. Open the frontend folder in VS Code.
+2. Right-click index.html -> Open with Live Server.
+3. Open the exact same URL in TWO browser tabs.
+4. Tab 1: Authority login
+   authority@crisisbridge.demo
+   123456
+5. Tab 2: Citizen login
+   citizen@crisisbridge.demo
+   123456
+
+IMPORTANT:
+This presentation build uses sessionStorage for login sessions, so Authority and Citizen can be logged in simultaneously in two tabs on the same laptop. Operational data remains offline-first in LocalStorage/IndexedDB.
+
+VOICE BROADCAST DEMO
+--------------------
+Authority -> Emergency Broadcast -> Record authority voice -> Stop -> Start broadcast.
+Citizen -> Emergency Alerts -> Play voice.
+The actual recorded voice is stored in IndexedDB and the broadcast event is delivered locally through BroadcastChannel/localStorage recovery.
+
+RESCUE DEMO
+-----------
+Authority -> Rescue Teams -> Restore dispatch capacity (only if needed) -> assign a rescue team to an incident.
+AVAILABLE and STANDBY teams are dispatchable.
+
+OTHER DEMO FEATURES
+-------------------
+Emergency Report, GPS capture, evidence photo, priority scoring, duplicate detection, rescue recommendation, volunteer matching, shelter allocation, resource allocation, incident timeline/audit log, offline map fallback, analytics, safety information, 12-language emergency phrasebook, authority broadcast repetition/scheduling, and PWA offline caching.
+
+DEMO ACCOUNTS
+-------------
+Citizen   citizen@crisisbridge.demo   / 123456
+Volunteer volunteer@crisisbridge.demo / 123456
+Authority authority@crisisbridge.demo / 123456
+
+DO NOT OPEN index.html DIRECTLY.
+Use Live Server or: python -m http.server inside frontend.
+
+
+VOICE BROADCAST FIX
+The authority voice is now stored in IndexedDB plus a short LocalStorage fallback.
+Open the exact same Live Server URL in both tabs. Authority: record -> stop -> start broadcast. Citizen: Emergency Alerts -> Play voice. Press Ctrl+Shift+R once in both tabs after updating.
+
+
+OFFLINE LIMITS & BACKUP
+-----------------------
+- Open the app once through Live Server (localhost) while the files are available. The service worker caches the app shell for later offline reopening. Do not use file:// directly.
+- On one laptop, browser-local incident data, local priority scoring, shelter/resource management, voice recordings and same-origin tab alerts can work offline, subject to browser permissions/storage.
+- GPS depends on device/browser permission and may not be available in every environment. Speech-to-text in the browser may use an online service; use the original audio recording for offline voice reporting. The phrasebook is not general-purpose offline translation.
+- The map falls back to a schematic offline operations map; live map tiles require internet unless separately cached. Weather is only the last saved snapshot.
+- For separate laptops, internet is not required if they share a working local Wi-Fi/LAN and a relay server is running. If there is no network path at all, devices cannot exchange data live. Use Profile -> Offline data backup for manual transfer by USB/file.
+- Before the demo: visit each page once while online so the app shell is cached, then test using browser DevTools -> Network -> Offline. Keep a separate backup of important data.
+- This is a demonstration prototype, not a validated life-safety dispatch system. Do not rely on it as the only emergency channel; call 112 or use official local emergency services when possible.

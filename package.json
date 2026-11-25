@@ -1,0 +1,9 @@
+{
+  "name": "crisisbridge-offline-lan-demo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Zero-dependency local LAN relay for CrisisBridge offline demo",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
